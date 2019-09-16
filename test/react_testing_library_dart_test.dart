@@ -15,7 +15,7 @@ void main() async {
         print(document.head.innerHtml);
         print(js_util.getProperty(window, 'React'));
 
-        var test = TestingLibraryReact.render(genericReactElement);
+        var test = TestingLibraryReact.render(genericReactElement());
 
         expect(test.getByText('Hello'), isNotNull);
       });
