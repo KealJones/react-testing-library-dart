@@ -7,10 +7,10 @@ import 'package:js/js.dart';
 external JsNoArgFunction(String functionBody);
 
 @JS('Function')
-external Js1ArgFunction(arg1, String functionBody);
+external Js1ArgFunction(String arg1name, String functionBody);
 
 @JS('Function')
-external Js2ArgFunction(arg1, arg2, String functionBody);
+external Js2ArgFunction(String arg1name, String arg2name, String functionBody);
 
 @JS('Function')
-external Js3ArgFunction(arg1, arg2, arg3, String functionBody);
+external Js3ArgFunction(String arg1name, String arg2name, String arg3name, String functionBody);
