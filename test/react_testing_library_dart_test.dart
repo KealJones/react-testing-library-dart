@@ -8,14 +8,16 @@ import 'util.dart';
 void main() async {
   group('react-testing-library-dart', () {
     group('testing tests', () {
-      tearDown((){ TestingLibraryReact.cleanup(); });
+      tearDown(() {
+        TestingLibraryReact.cleanup();
+      });
       test("1", () {
         var test = TestingLibraryReact.render(HelloReactElement('World'));
 
         expect(test.getByText('Hello World'), isNotNull);
 
         test.rerender(HelloReactElement('Keal'));
-        
+
         expect(test.getByText('Hello Keal'), isNotNull);
       });
 
@@ -25,7 +27,7 @@ void main() async {
         expect(test.getByText('Hello Dart'), isNotNull);
 
         test.rerender(HelloReactElement('Fan'));
-        
+
         expect(() => test.getByText('Hello React'), throwsA(anything));
       });
     });

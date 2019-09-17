@@ -10,4 +10,3 @@ var HelloReactElement = Js1ArgFunction('text', '''
     }
     return React.createElement(Hello, {toWhat: text}, null);
   ''');
-

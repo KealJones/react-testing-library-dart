@@ -13,4 +13,5 @@ external Js1ArgFunction(String arg1name, String functionBody);
 external Js2ArgFunction(String arg1name, String arg2name, String functionBody);
 
 @JS('Function')
-external Js3ArgFunction(String arg1name, String arg2name, String arg3name, String functionBody);
+external Js3ArgFunction(
+    String arg1name, String arg2name, String arg3name, String functionBody);
