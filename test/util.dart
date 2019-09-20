@@ -1,12 +1,6 @@
-library react_testing_library_dart.test;
+library react_testing_library_dart.test.util;
 
-import 'interop_util.dart';
+import 'dart:html';
+import 'dart:js_util' as js_util;
 
-var HelloReactElement = Js1ArgFunction('text', '''
-    class Hello extends React.Component {
-      render() {
-        return React.createElement('div', null, `Hello \$\{this.props.toWhat\}`);
-      }
-    }
-    return React.createElement(Hello, {toWhat: text}, null);
-  ''');
+HelloReactElement(text) => js_util.callMethod(window, 'createHello', [text]);

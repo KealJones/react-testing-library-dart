@@ -156,7 +156,7 @@ class RenderResult {
   external List<Element> getAllByPlaceholderText();
   external List<Element> getAllByRole();
   external List<Element> getAllByTestId();
-  external List<Element> getAllByText(String text);
+  external List<dynamic> getAllByText(dynamic search);
   external List<Element> getAllByTitle();
   external Element getByAltText();
   external Element getByDisplayValue();
@@ -164,7 +164,7 @@ class RenderResult {
   external Element getByPlaceholderText();
   external Element getByRole();
   external Element getByTestId();
-  external Element getByText(String text);
+  external Element getByText(dynamic search);
   external Element getByTitle();
   external List<Element> queryAllByAltText();
   external List<Element> queryAllByDisplayValue();

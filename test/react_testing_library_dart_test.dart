@@ -1,3 +1,5 @@
+import 'dart:html';
+
 @TestOn('browser')
 
 import 'package:react_testing_library_dart/react_testing_library.dart';
@@ -9,26 +11,30 @@ void main() async {
   group('react-testing-library-dart', () {
     group('testing tests', () {
       tearDown(() {
-        TestingLibraryReact.cleanup();
+        RTL.cleanup();
       });
       test("1", () {
-        var test = TestingLibraryReact.render(HelloReactElement('World'));
-
-        expect(test.getByText('Hello World'), isNotNull);
+        var test = RTL.render(HelloReactElement('World'));
+        
+        expect(test.getByText('Hello World'), isA<Element>());
+        expect(test.getAllByText('Hello World'), isA<List>());
+        expect(test.getAllByText('Hello World')[0], isA<Element>());
+        expect(test.getByText(RegExp('Hello')).innerText, 'Hello World');
 
         test.rerender(HelloReactElement('Keal'));
 
-        expect(test.getByText('Hello Keal'), isNotNull);
+        expect(test.getByText(RegExp('Keal')), isA<Element>());
+        expect(test.getByText(RegExp('Keal')).innerText, 'Hello Keal');
       });
 
       test("2", () {
-        var test = TestingLibraryReact.render(HelloReactElement('Dart'));
+        var test = RTL.render(HelloReactElement('Dart'));
 
         expect(test.getByText('Hello Dart'), isNotNull);
 
         test.rerender(HelloReactElement('Fan'));
 
-        expect(() => test.getByText('Hello React'), throwsA(anything));
+        expect(() => test.getByText(RegExp('React')), throwsA(anything));
       });
     });
   });

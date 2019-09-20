@@ -6,6 +6,15 @@
     <script>
       window.ReactDom = ReactDOM;
       window.testUtils = ReactTestUtils;
+      class Hello extends React.Component {
+        render() {
+          return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+        }
+      }
+      function createHello(text) {
+        return React.createElement(Hello, {toWhat: text}, null);
+      }
+      window.createHello = createHello;
     </script>
     <script src="packages/react_testing_library_dart/js/testing-library-react.umd.js"></script>
     <link rel="x-dart-test" href="react_testing_library_dart_test.dart">
