@@ -1,4 +1,8 @@
 name: react_testing_library_dart
+version: 0.1.0
+author: "Keal Jones <kealjones@gmail.com>"
+homepage: https://github.com/KealJones/react-testing-library-dart
+description: A Dart wrapper around react-testing-library
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
