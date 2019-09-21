@@ -5,7 +5,6 @@ import 'dart:js';
 import 'dart:js_util' as js_util;
 
 import './interop.dart';
-import './react_testing_library.dart';
 
 const contentDivId = 'content';
 
