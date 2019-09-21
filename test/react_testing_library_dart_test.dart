@@ -2,7 +2,7 @@ import 'dart:html';
 
 @TestOn('browser')
 
-import 'package:react_testing_library_dart/react_testing_library.dart';
+import 'package:react_testing_library/react_testing_library.dart';
 import 'package:test/test.dart';
 
 import 'util.dart';
