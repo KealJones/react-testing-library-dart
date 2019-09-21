@@ -54,8 +54,9 @@ ReactTestingLibraryInterface RTL = ReactTestingLibrary();
 class ReactTestingLibrary implements ReactTestingLibraryInterface {
   @override
   RenderResultWrapper render(ui, [options]) {
-    if (options != null)
+    if (options != null) {
       return RenderResultWrapper(TestingLibraryReact.render(ui, options));
+    }
     return RenderResultWrapper(TestingLibraryReact.render(ui));
   }
 
