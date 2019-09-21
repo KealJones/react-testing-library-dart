@@ -12,21 +12,21 @@ Future<Null> enableTestMode() async {
   if (js_util.getProperty(window, 'React') == null) {
     var reactJsScript = ScriptElement();
     reactJsScript.src =
-        'packages/react_testing_library_dart/js/react.development.js';
+        'packages/react_testing_library/js/react.development.js';
     document.head.append(reactJsScript);
   }
   await Future.delayed(Duration(seconds: 1));
   if (js_util.getProperty(window, 'ReactDOM') == null) {
     var reactDomJsScript = ScriptElement();
     reactDomJsScript.src =
-        'packages/react_testing_library_dart/js/react-dom.development.js';
+        'packages/react_testing_library/js/react-dom.development.js';
     document.head.append(reactDomJsScript);
   }
   await Future.delayed(Duration(seconds: 1));
   if (js_util.getProperty(window, 'ReactTestUtils') == null) {
     var reactDomTestUtilsJsScript = ScriptElement();
     reactDomTestUtilsJsScript.src =
-        'packages/react_testing_library_dart/js/react-dom-test-utils.development.js';
+        'packages/react_testing_library/js/react-dom-test-utils.development.js';
     document.head.append(reactDomTestUtilsJsScript);
   }
   await Future.delayed(Duration(seconds: 1));
@@ -40,33 +40,36 @@ Future<Null> enableTestMode() async {
     await Future.delayed(Duration(seconds: 1));
     var reactTestingLibraryJsScript = ScriptElement();
     reactTestingLibraryJsScript.src =
-        'packages/react_testing_library_dart/js/testing-library-react.umd.js';
+        'packages/react_testing_library/js/testing-library-react.umd.js';
     document.head.append(reactTestingLibraryJsScript);
   }
   await Future.delayed(Duration(seconds: 1));
 }
 
-convertToJsRegExp(String text) => js_util.callConstructor(js_util.getProperty(window, 'RegExp'), [text]);
+convertToJsRegExp(String text) =>
+    js_util.callConstructor(js_util.getProperty(window, 'RegExp'), [text]);
 
 ReactTestingLibraryInterface RTL = ReactTestingLibrary();
 
 class ReactTestingLibrary implements ReactTestingLibraryInterface {
   @override
-  RenderResultWrapper render(ui, [options]){
-    if (options != null) return RenderResultWrapper(TestingLibraryReact.render(ui, options));
+  RenderResultWrapper render(ui, [options]) {
+    if (options != null)
+      return RenderResultWrapper(TestingLibraryReact.render(ui, options));
     return RenderResultWrapper(TestingLibraryReact.render(ui));
   }
 
   @override
   noSuchMethod(Invocation i) {
     String memberNameString = i.memberName
-            .toString()
-            .replaceAll('Symbol("', '')
-            .replaceAll('")', '')
-            .replaceAll('=', '')
-            .replaceAll('_', '-');
+        .toString()
+        .replaceAll('Symbol("', '')
+        .replaceAll('")', '')
+        .replaceAll('=', '')
+        .replaceAll('_', '-');
     if (i.isMethod && i.isGetter) {
-      return context['TestingLibraryReact'].callMethod(memberNameString, [...i.positionalArguments]);
+      return context['TestingLibraryReact']
+          .callMethod(memberNameString, [...i.positionalArguments]);
     }
     return i;
   }
@@ -77,8 +80,8 @@ class RenderResultWrapper implements RenderResult {
   RenderResultWrapper(this.theRender);
 
   @override
-  Element getByText(dynamic text){
-    if (text is RegExp){
+  Element getByText(dynamic text) {
+    if (text is RegExp) {
       return theRender.getByText(convertToJsRegExp(text.pattern));
     }
     return theRender.getByText(text);
@@ -92,13 +95,14 @@ class RenderResultWrapper implements RenderResult {
   @override
   noSuchMethod(Invocation i) {
     String memberNameString = i.memberName
-            .toString()
-            .replaceAll('Symbol("', '')
-            .replaceAll('")', '')
-            .replaceAll('=', '')
-            .replaceAll('_', '-');
+        .toString()
+        .replaceAll('Symbol("', '')
+        .replaceAll('")', '')
+        .replaceAll('=', '')
+        .replaceAll('_', '-');
     if (i.isMethod) {
-      return js_util.callMethod(theRender, memberNameString, [...i.positionalArguments]);
+      return js_util
+          .callMethod(theRender, memberNameString, [...i.positionalArguments]);
     }
   }
 }
@@ -119,30 +123,18 @@ abstract class ReactTestingLibraryInterface {
   cleanup();
   configure(newConfig);
   CreateEvent get createEvent;
-  findAllByAltText(
-      container, text, options, waitForElementOptions);
-  findAllByDisplayValue(
-      container, text, options, waitForElementOptions);
-  findAllByLabelText(
-      container, text, options, waitForElementOptions);
-  findAllByPlaceholderText(
-      container, text, options, waitForElementOptions);
-  findAllByRole(
-      container, text, options, waitForElementOptions);
-  findAllByTestId(
-      container, text, options, waitForElementOptions);
-  findAllByText(
-      container, text, options, waitForElementOptions);
-  findAllByTitle(
-      container, text, options, waitForElementOptions);
-  findByAltText(
-      container, text, options, waitForElementOptions);
-  findByDisplayValue(
-      container, text, options, waitForElementOptions);
-  findByLabelText(
-      container, text, options, waitForElementOptions);
-  findByPlaceholderText(
-      container, text, options, waitForElementOptions);
+  findAllByAltText(container, text, options, waitForElementOptions);
+  findAllByDisplayValue(container, text, options, waitForElementOptions);
+  findAllByLabelText(container, text, options, waitForElementOptions);
+  findAllByPlaceholderText(container, text, options, waitForElementOptions);
+  findAllByRole(container, text, options, waitForElementOptions);
+  findAllByTestId(container, text, options, waitForElementOptions);
+  findAllByText(container, text, options, waitForElementOptions);
+  findAllByTitle(container, text, options, waitForElementOptions);
+  findByAltText(container, text, options, waitForElementOptions);
+  findByDisplayValue(container, text, options, waitForElementOptions);
+  findByLabelText(container, text, options, waitForElementOptions);
+  findByPlaceholderText(container, text, options, waitForElementOptions);
   findByRole(container, text, options, waitForElementOptions);
   findByTestId(container, text, options, waitForElementOptions);
   findByText(container, text, options, waitForElementOptions);

@@ -1,9 +1,9 @@
 <html>
   <head>
-    <script src="packages/react_testing_library_dart/js/react.development.js"></script>
-    <script src="packages/react_testing_library_dart/js/react-dom.development.js"></script>
-    <script src="packages/react_testing_library_dart/js/react-dom-test-utils.development.js"></script>
-    <script>
+    <script src="packages/react_testing_library/js/react.development.js"></script>
+    <script src="packages/react_testing_library/js/react-dom.development.js"></script>
+    <script src="packages/react_testing_library/js/react-dom-test-utils.development.js"></script>
+    <script defer>
       window.ReactDom = ReactDOM;
       window.testUtils = ReactTestUtils;
       class Hello extends React.Component {
@@ -16,8 +16,8 @@
       }
       window.createHello = createHello;
     </script>
-    <script src="packages/react_testing_library_dart/js/testing-library-react.umd.js"></script>
-    <link rel="x-dart-test" href="react_testing_library_dart_test.dart">
+    <script src="packages/react_testing_library/js/testing-library-react.umd.js"></script>
+    <link rel="x-dart-test" href="react_testing_library_test.dart">
     <script src="packages/test/dart.js"></script>
   </head>
   <body>

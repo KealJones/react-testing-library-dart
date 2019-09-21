@@ -1,7 +1,6 @@
 import 'dart:html';
 
 @TestOn('browser')
-
 import 'package:react_testing_library/react_testing_library.dart';
 import 'package:test/test.dart';
 
@@ -15,7 +14,7 @@ void main() async {
       });
       test("1", () {
         var test = RTL.render(HelloReactElement('World'));
-        
+
         expect(test.getByText('Hello World'), isA<Element>());
         expect(test.getAllByText('Hello World'), isA<List>());
         expect(test.getAllByText('Hello World')[0], isA<Element>());
